@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "@symfony/stimulus-bridge": "^3.2.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -13,6 +12,7 @@
     "build": "encore production --progress"
   },
   "devDependencies": {
+    "@symfony/stimulus-bridge": "^3.2.2",
     "@symfony/webpack-encore": "^4.5.0"
   }
 }
