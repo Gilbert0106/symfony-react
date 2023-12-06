@@ -1,15 +1,14 @@
 import React from "react";
-import { createRoot } from 'react-dom/client';
-import './styles/app.css';
+import "./styles/app.css";
+import { createRoot } from "react-dom/client";
+import ProductList from "./components/ProductList";
 
 class App extends React.Component {
   render() {
-    return (
-      <h1>Hello</h1>
-    )
+    return (<ProductList></ProductList>);
   }
 }
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = createRoot(container);
-root.render(<App/>);
+root.render(<App />);
