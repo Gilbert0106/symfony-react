@@ -15,9 +15,9 @@ class ProductController extends AbstractController
     public function createProduct(EntityManagerInterface $entityManager): Response
     {
         $product = new Product();
-        $product->setName('Keyboard');
-        $product->setPrice(1999);
-        $product->setDescription('Ergonomic and stylish!');
+        $product->setName('Mouse');
+        $product->setPrice(999);
+        $product->setDescription('Lightweight and easy');
         $entityManager->persist($product);
         $entityManager->flush();
 
@@ -39,7 +39,15 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('api/product/{id}', name: 'product_api_show')]
+    #[Route('api/products', name: 'products_index')]
+    public function index(EntityManagerInterface $entityManager): JsonResponse
+    {
+
+        $products = $entityManager->getRepository(Product::class)->findAll();
+        return $this->json($products);
+    }
+
+    #[Route('api/products/{id}', name: 'product_api_show')]
     public function single(Product $product): JsonResponse
     {
 
