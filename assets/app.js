@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from 'react-dom/client';
+import './styles/app.css';
 
 class App extends React.Component {
   render() {
@@ -11,4 +12,4 @@ class App extends React.Component {
 
 const container = document.getElementById('root');
 const root = createRoot(container);
-root.render(<App />);
+root.render(<App/>);
