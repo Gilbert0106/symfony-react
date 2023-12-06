@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -24,7 +25,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/product/{id}', name: 'product_show')]
-    public function show(Product $product): Response
+    public function show(Product $product): JsonResponse
     {
 
         if (!$product) {
@@ -36,5 +37,18 @@ class ProductController extends AbstractController
         return $this->render('/product/single.html.twig', [
             'name' => $product->getName(),
         ]);
+    }
+
+    #[Route('api/product/{id}', name: 'product_api_show')]
+    public function single(Product $product): JsonResponse
+    {
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id'
+            );
+        }
+
+        return $this->json($product);
     }
 }
