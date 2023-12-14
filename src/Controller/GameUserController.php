@@ -27,8 +27,6 @@ class GameUserController extends AbstractController
             )
         );
 
-        return $this->json($curl->info()); 
-
         return $this->json($curl->execute());
     }
 }
